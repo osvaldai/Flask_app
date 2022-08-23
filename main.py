@@ -1,19 +1,16 @@
-# Importing flask module in the project is mandatory
-# An object of Flask class is our WSGI application.
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
-# Flask constructor takes the name of
-# current module (__name__) as argument.
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://shop.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////shop.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
 
 class Item(db.Model):
-    id = db.Column(db.Integer, primery_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(150), nullable=False)
     price = db.Column(db.Integer, nullable=False)
     mass = db.Column(db.Integer, nullable=False)
@@ -28,7 +25,7 @@ class Item(db.Model):
 
 @app.route('/')
 def index():
-    items = Item.qvery.order_by(Item.price).all()
+    items = Item.query.order_by(Item.price).all()
     return render_template('index.html', data=items)
 
 
@@ -38,7 +35,7 @@ def about():
 
 
 @app.route('/create', methods=['POST', 'GET'])
-def about():
+def create():
     if request.method == 'POST':
         title = request.form['title']
         price = request.form['price']
