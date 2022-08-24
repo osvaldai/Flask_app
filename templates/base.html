@@ -30,13 +30,11 @@
 
         {% if current_user.has_role('admin') %}
                     <a class="me-3 py-2 text-dark text-decoration-none" href="/">Главная</a>
-                    <a class="me-3 py-2 text-dark text-decoration-none" href="/about">О сайте</a>
                     <a class="me-3 py-2 text-dark text-decoration-none" href="/admin">Admin panel</a>
                     <a class="me-3 py-2 text-dark text-decoration-none" href="/create">Добавить товар</a>
                     <a class="py-2 text-dark text-decoration-none" href="/logout">Выйти</a>
          {% else %}
             <a class="me-3 py-2 text-dark text-decoration-none" href="/">Главная</a>
-            <a class="me-3 py-2 text-dark text-decoration-none" href="/about">О сайте</a>
             <a class="me-3 py-2 text-dark text-decoration-none" href="/login">Войти</a>
           {% endif %}
       </nav>
