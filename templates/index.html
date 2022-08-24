@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Онлайн Магазин</title>
+    <title>Старая Почта</title>
 {% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container ">
   <div class="card-deck mb-3 text-center">
     {% for el in data %}
       <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
@@ -15,19 +15,22 @@
             <h4 class="my-0 fw-normal">{{ el.title }}</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">{{ el.price }}<small class="text-muted fw-light">$</small></h1>
+            <h1 class="card-title pricing-card-title">Цена посылки: {{ el.price }}
+              <small class="text-muted fw-light">$</small></h1>
+
             <ul class="list-unstyled mt-3 mb-4">
-              <li>{{ el.mass }}</li>
-              <li>2 GB of storage</li>
-              <li>Email support</li>
-              <li>Help center access</li>
+              <li>Масса кг: {{ el.mass }}</li>
+              <li>Адрес доставки: {{ el.country }}/{{ el.city }}/{{ el.street }}</li>
+
             </ul>
-            <a href="#" class="w-100 btn btn-lg btn-outline-primary">Купить</a>
+            <a href="#" class="w-100 btn btn-lg btn-outline-primary">Подробнее</a>
+            <a href="/{{ el.id }}/del" class="btn btn-danger">Удалить</a>
+
           </div>
         </div>
       </div>
+      </div>
     {% endfor %}
-  </div>
 </div>
 </div>
 
